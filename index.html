@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flames Test 🔥</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <main id="app" class="card">
+    <div class="top">
+      <h1 id="title"></h1>
+      <div id="subtitle" class="subtitle"></div>
+
+      <div id="progressWrap" class="progressWrap hidden" aria-label="Progress">
+        <div class="progressMeta">
+          <span id="progressLabel">Question 1/10</span>
+          <span id="progressPct">10%</span>
+        </div>
+        <div class="progressBar">
+          <div id="progressFill" class="progressFill"></div>
+        </div>
+      </div>
+    </div>
+
+    <figure class="heroFrame">
+      <img id="image" class="hero" src="assets/img/intro.jpg" alt="Memory"/>
+    </figure>
+
+    <!-- NOTE: using a div so we can inject line-by-line animations -->
+    <div id="text" class="text"></div>
+
+    <div id="buttons" class="buttons"></div>
+  </main>
+
+  <!-- Calculating overlay -->
+  <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Calculating">
+    <div class="overlayCard">
+      <div class="spinner"></div>
+      <div class="overlayTitle">Calculating flame resonance… 🔥</div>
+      <div class="overlaySub">No cheating. This is premium science.</div>
+    </div>
+  </div>
+
+  <!-- Effects layer -->
+  <div id="fxLayer" class="fxLayer" aria-hidden="true"></div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
