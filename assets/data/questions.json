@@ -1,0 +1,146 @@
+{
+  "cute": [
+    {
+      "id": "cute_01",
+      "question": "What part of you do I adore the most?",
+      "options": ["Your smile", "Your eyes", "Your heart", "All of the above"],
+      "correctIndex": 3,
+      "image": "q/cute_01.jpg"
+    },
+    {
+      "id": "cute_02",
+      "question": "What makes me fall in love with you again and again?",
+      "options": ["Your looks", "Your care", "Your intelligence", "All of the above"],
+      "correctIndex": 3,
+      "image": "q/cute_02.jpg"
+    },
+    {
+      "id": "cute_03",
+      "question": "What role do I want to play in your life?",
+      "options": ["Lover", "Protector", "Partner", "All of the above"],
+      "correctIndex": 3,
+      "image": "q/cute_03.jpg"
+    },
+    {
+      "id": "cute_04",
+      "question": "When I’m quiet around you, it usually means:",
+      "options": ["I’m bored", "I’m upset", "I’m tired", "I’m comfortable with you"],
+      "correctIndex": 3,
+      "image": "q/cute_04.jpg"
+    },
+    {
+      "id": "cute_05",
+      "question": "When I tease you, it usually means:",
+      "options": ["I’m bored", "I’m flirting", "I’m annoyed", "I’m distant"],
+      "correctIndex": 1,
+      "image": "q/cute_05.jpg"
+    }
+  ],
+  "memory": [
+    {
+      "id": "mem_01",
+      "question": "During B-school, what was one of my favorite things about your room?",
+      "options": ["Your candle making phase", "Your cocktail experiments", "Your baking disasters", "Your skincare testing"],
+      "correctIndex": 1,
+      "image": "q/mem_01.jpg"
+    },
+    {
+      "id": "mem_03",
+      "question": "At your school alumni reunion, who did I pretend to be?",
+      "options": ["Your college senior", "Your cousin’s friend", "Your school friend’s cousin", "Your neighbor"],
+      "correctIndex": 2,
+      "image": "q/mem_03.jpg"
+    },
+    {
+      "id": "mem_04",
+      "question": "Which temple did we visit where the priest said I made a good choice?",
+      "options": ["Tirupati", "Jagannath Temple", "Somnath", "Dwarka"],
+      "correctIndex": 1,
+      "image": "q/mem_04.jpg"
+    },
+    {
+      "id": "mem_05",
+      "question": "Which childhood fantasy did we fulfill together in Shimla?",
+      "options": ["Horse riding in snow", "Staying in a cottage", "Traveling in a toy train", "Ice skating"],
+      "correctIndex": 2,
+      "image": "q/mem_05.jpg"
+    },
+    {
+      "id": "mem_06",
+      "question": "Who teased us when I innocently called you a “good girl”?",
+      "options": ["Ishita", "Sejal", "Alan", "Manoram"],
+      "correctIndex": 1,
+      "image": "q/mem_06.jpg"
+    },
+    {
+      "id": "mem_07",
+      "question": "From where did we soft-launch each other on Instagram?",
+      "options": ["Lodhi Garden", "Humayun’s Tomb", "Amdavadi Gufa", "Hauz Khas Fort"],
+      "correctIndex": 2,
+      "image": "q/mem_07.jpg"
+    },
+    {
+      "id": "mem_08",
+      "question": "Where did we kiss under fireworks on New Year’s?",
+      "options": ["Goa", "Gokarna", "Pondicherry", "Varkala"],
+      "correctIndex": 2,
+      "image": "q/mem_08.jpg"
+    },
+    {
+      "id": "mem_09",
+      "question": "What weirdly kept appearing everywhere in Mussorie?",
+      "options": ["Dogs following us", "Rainbow cafés", "Ruskin Bond lookalikes", "Street musicians"],
+      "correctIndex": 2,
+      "image": "q/mem_09.jpg"
+    },
+    {
+      "id": "mem_10",
+      "question": "In Chanakyapuri, what were we pretending to do?",
+      "options": ["A corporate-style office photoshoot", "A secret engagement shoot", "A wedding-guest photoshoot to convince your parents", "A dramatic college project shoot"],
+      "correctIndex": 2,
+      "image": "q/mem_10.jpg"
+    },
+    {
+      "id": "mem_11",
+      "question": "What dish did we have at Hauz Khas Social that you later recreated in Goa?",
+      "options": ["Paneer Tikka masala", "Benarasi Patiala", "Sushi platter", "Falafel bowl"],
+      "correctIndex": 1,
+      "image": "q/mem_11.jpg"
+    },
+    {
+      "id": "mem_12",
+      "question": "What sweet thing happened at Hauz Khas?",
+      "options": ["The staff gave us a free dessert", "A band dedicated a song to us", "A stranger offered to take our photo because we looked good", "We won a small in-house contest"],
+      "correctIndex": 2,
+      "image": "q/mem_12.jpg"
+    },
+    {
+      "id": "mem_13",
+      "question": "What was special about our Udaipur stay?",
+      "options": ["Lake view room", "Candlelight dinner", "Two palace stays", "Hot air balloon ride"],
+      "correctIndex": 2,
+      "image": "q/mem_13.jpg"
+    },
+    {
+      "id": "mem_14",
+      "question": "Who suggested our first date place with no veg food choices?",
+      "options": ["Your roommate", "A senior", "A Casanova in our batch", "Google reviews"],
+      "correctIndex": 2,
+      "image": "q/mem_14.jpg"
+    },
+    {
+      "id": "mem_15",
+      "question": "While kayaking in Kochi, what were we trying not to crash into?",
+      "options": ["Speed boats", "Coral rocks", "Chinese fishing nets", "Mangroves"],
+      "correctIndex": 2,
+      "image": "q/mem_15.jpg"
+    },
+    {
+      "id": "mem_16",
+      "question": "Where did we kiss during our Meghalaya trip?",
+      "options": ["Waterfall base", "Cave entrance", "Single-decker bamboo bridge", "Cliff viewpoint"],
+      "correctIndex": 2,
+      "image": "q/mem_16.jpg"
+    }
+  ]
+}

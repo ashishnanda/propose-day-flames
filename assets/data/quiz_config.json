@@ -1,0 +1,14 @@
+{
+  "names": {
+    "gfName": "Divya",
+    "yourName": "Ashish"
+  },
+  "sample": { "cute": 3, "memory": 7 },
+  "shuffleFinalOrder": true,
+  "paths": {
+    "introImage": "assets/img/intro.jpg",
+    "scoreImage": "assets/img/score.jpg",
+    "proposeImage": "assets/img/propose.jpg",
+    "questionImageBase": "assets/img/"
+  }
+}
