@@ -47,41 +47,41 @@
     {
       "id": "mem_03",
       "question": "At your school alumni reunion, who did I pretend to be?",
-      "options": ["Your college senior", "Your cousin’s friend", "Your school friend’s cousin", "Your neighbor"],
+      "options": ["Your college senior", "Your cousin’s friend", "Your school friend’s brother", "Your neighbor"],
       "correctIndex": 2,
       "image": "q/mem_03.jpg"
     },
     {
       "id": "mem_04",
       "question": "Which temple did we visit where the priest said I made a good choice?",
-      "options": ["Tirupati", "Jagannath Temple", "Somnath", "Dwarka"],
+      "options": ["Tirupati", "Jagannath", "Somnath", "Dwarka"],
       "correctIndex": 1,
       "image": "q/mem_04.jpg"
     },
     {
       "id": "mem_05",
-      "question": "Which childhood fantasy did we fulfill together in Shimla?",
-      "options": ["Horse riding in snow", "Staying in a cottage", "Traveling in a toy train", "Ice skating"],
+      "question": "Which childhood fantasy did we fulfill together in our Shimla trip?",
+      "options": ["Horse riding in snow", "Solving a mystery", "Traveling in a toy train", "Ice skating"],
       "correctIndex": 2,
       "image": "q/mem_05.jpg"
     },
     {
       "id": "mem_06",
       "question": "Who teased us when I innocently called you a “good girl”?",
-      "options": ["Ishita", "Sejal", "Alan", "Manoram"],
+      "options": ["Ishita", "Sejal", "Rashi", "Manoram"],
       "correctIndex": 1,
       "image": "q/mem_06.jpg"
     },
     {
       "id": "mem_07",
-      "question": "From where did we soft-launch each other on Instagram?",
-      "options": ["Lodhi Garden", "Humayun’s Tomb", "Amdavadi Gufa", "Hauz Khas Fort"],
+      "question": "Where did we soft-launch each other on Instagram?",
+      "options": ["Lodhi Garden", "Himanshu’s Tomb", "Amdavadi Gufa", "Hauz Khas Fort"],
       "correctIndex": 2,
       "image": "q/mem_07.jpg"
     },
     {
       "id": "mem_08",
-      "question": "Where did we kiss under fireworks on New Year’s?",
+      "question": "Where did we kiss under fireworks on New Year’s 2025?",
       "options": ["Goa", "Gokarna", "Pondicherry", "Varkala"],
       "correctIndex": 2,
       "image": "q/mem_08.jpg"
@@ -96,7 +96,7 @@
     {
       "id": "mem_10",
       "question": "In Chanakyapuri, what were we pretending to do?",
-      "options": ["A corporate-style office photoshoot", "A secret engagement shoot", "A wedding-guest photoshoot to convince your parents", "A dramatic college project shoot"],
+      "options": ["A corporate-style office meeting", "A secret stakeout", "A wedding photoshoot", "A poetry slam"],
       "correctIndex": 2,
       "image": "q/mem_10.jpg"
     },
@@ -117,7 +117,7 @@
     {
       "id": "mem_13",
       "question": "What was special about our Udaipur stay?",
-      "options": ["Lake view room", "Candlelight dinner", "Two palace stays", "Hot air balloon ride"],
+      "options": ["Lake view room", "Candlelight dinner", "Two palace stays", "All of the above"],
       "correctIndex": 2,
       "image": "q/mem_13.jpg"
     },
