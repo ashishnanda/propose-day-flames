@@ -33,25 +33,7 @@ const progressFill = document.getElementById("progressFill");
 const overlay = document.getElementById("overlay");
 const fxLayer = document.getElementById("fxLayer");
 
-// --- Boot ---
-Promise.all([
-  fetch("assets/data/questions.json").then(r => r.json()),
-  fetch("assets/data/quiz_config.json").then(r => r.json())
-]).then(([questionsJson, configJson]) => {
-  bank = questionsJson;
-  config = configJson;
-  stage = "intro";
-  render();
-}).catch(err => {
-  stage = "done";
-  titleEl.innerText = "Oops";
-  subtitleEl.innerText = "";
-  setTextPlain("Couldn’t load data files. Run a local server (python3 -m http.server) and retry.");
-  buttonsEl.innerHTML = "";
-  console.error(err);
-});
-
-// --- Helpers ---
+// --- Helpers: shuffle/sample ---
 function shuffle(arr) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -65,42 +47,38 @@ function sampleN(arr, n) {
   return shuffle(arr).slice(0, Math.min(n, arr.length));
 }
 
+// --- Image preloading ---
+function preloadImage(url) {
+  try {
+    const img = new Image();
+    img.decoding = "async";
+    img.loading = "eager";
+    img.src = url;
+  } catch (_) {}
+}
+
+function preloadPageImages() {
+  if (!config || !config.paths) return;
+  preloadImage(config.paths.introImage);
+  preloadImage(config.paths.scoreImage);
+  preloadImage(config.paths.proposeImage);
+}
+
+// --- UI helpers ---
 function setImage(path) {
   imageEl.src = path;
+
+  // ✅ Preload next quiz image while user is on current question
+  if (stage === "quiz" && selectedQuestions.length > 0) {
+    const nextQ = selectedQuestions[currentIndex + 1];
+    if (nextQ && config?.paths?.questionImageBase) {
+      preloadImage(config.paths.questionImageBase + nextQ.image);
+    }
+  }
 }
 
 function clearButtons() {
   buttonsEl.innerHTML = "";
-}
-
-function tryStartMusic() {
-  if (musicEnabled) return;
-  bgAudio.play()
-    .then(() => { musicEnabled = true; })
-    .catch(() => {
-      // If something blocks it, the rest of the app still works.
-      // (On iOS, this should succeed because it's called inside Start tap.)
-    });
-}
-
-function playClick(){
-  if (!musicEnabled) return;
-  try {
-    clickAudio.currentTime = 0;
-    clickAudio.play().catch(()=>{});
-  } catch(_) {}
-}
-
-function addButton(label, cls, onClick) {
-  const btn = document.createElement("button");
-  btn.innerText = label;
-  btn.className = cls;
-  btn.onclick = (e) => {
-    playClick();
-    onClick(e);
-  };
-  buttonsEl.appendChild(btn);
-  return btn;
 }
 
 function disableAllButtons() {
@@ -133,6 +111,37 @@ function setLetterMode(on) {
   else appEl.classList.remove("letterMode");
 }
 
+// --- Audio helpers ---
+function tryStartMusic() {
+  if (musicEnabled) return;
+  bgAudio.play()
+    .then(() => { musicEnabled = true; })
+    .catch(() => {
+      // On iOS this should succeed since called inside a button tap
+    });
+}
+
+function playClick() {
+  if (!musicEnabled) return;
+  try {
+    clickAudio.currentTime = 0;
+    clickAudio.play().catch(() => {});
+  } catch (_) {}
+}
+
+function addButton(label, cls, onClick) {
+  const btn = document.createElement("button");
+  btn.innerText = label;
+  btn.className = cls;
+  btn.onclick = (e) => {
+    playClick();
+    onClick(e);
+  };
+  buttonsEl.appendChild(btn);
+  return btn;
+}
+
+// --- Quiz setup ---
 function buildQuiz() {
   const cuteCount = config.sample.cute;
   const memoryCount = config.sample.memory;
@@ -147,7 +156,7 @@ function buildQuiz() {
   score = 0;
 }
 
-// Text helpers
+// --- Text helpers ---
 function setTextPlain(text) {
   textEl.innerText = text;
 }
@@ -163,12 +172,17 @@ function setTextLines(lines, baseDelayMs = 0, stepMs = 220) {
   });
 }
 
-// FX: hearts + confetti burst near the card
+// --- FX helpers ---
+function rand(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function burstFX() {
   const rect = appEl.getBoundingClientRect();
   const originX = rect.left + rect.width * 0.5;
   const originY = rect.top + rect.height * 0.82;
 
+  // hearts
   const hearts = 18;
   for (let i = 0; i < hearts; i++) {
     const el = document.createElement("div");
@@ -187,6 +201,7 @@ function burstFX() {
     setTimeout(() => el.remove(), 1600);
   }
 
+  // confetti
   const confetti = 22;
   for (let i = 0; i < confetti; i++) {
     const el = document.createElement("div");
@@ -200,9 +215,9 @@ function burstFX() {
     el.style.animationDelay = `${rand(0, 90)}ms`;
 
     const palette = [
-      "rgba(216,180,106,0.95)",
-      "rgba(255,255,255,0.85)",
-      "rgba(200,180,255,0.70)"
+      "rgba(216,180,106,0.95)", // gold
+      "rgba(255,255,255,0.85)", // ivory
+      "rgba(200,180,255,0.70)"  // soft lilac
     ];
     el.style.background = palette[rand(0, palette.length - 1)];
 
@@ -211,9 +226,27 @@ function burstFX() {
   }
 }
 
-function rand(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+// --- Boot ---
+Promise.all([
+  fetch("assets/data/questions.json").then(r => r.json()),
+  fetch("assets/data/quiz_config.json").then(r => r.json())
+]).then(([questionsJson, configJson]) => {
+  bank = questionsJson;
+  config = configJson;
+
+  // ✅ Preload static page images immediately
+  preloadPageImages();
+
+  stage = "intro";
+  render();
+}).catch(err => {
+  stage = "done";
+  titleEl.innerText = "Oops";
+  subtitleEl.innerText = "";
+  setTextPlain("Couldn’t load data files. Run a local server (python3 -m http.server) and retry.");
+  buttonsEl.innerHTML = "";
+  console.error(err);
+});
 
 // --- Render ---
 function render() {
@@ -229,6 +262,7 @@ function render() {
 
     titleEl.innerText = "Flames Test 🔥";
     subtitleEl.innerText = `For ${gfName}.`;
+
     setImage(config.paths.introImage);
 
     setTextPlain(
@@ -239,10 +273,16 @@ function render() {
     );
 
     addButton("Start", "primary", () => {
-      // ✅ Start button is the ONLY music trigger now (iOS-safe)
+      // ✅ Start button triggers music (iOS-safe)
       tryStartMusic();
 
       buildQuiz();
+
+      // ✅ Preload first question image for instant start
+      if (selectedQuestions[0] && config?.paths?.questionImageBase) {
+        preloadImage(config.paths.questionImageBase + selectedQuestions[0].image);
+      }
+
       stage = "quiz";
       render();
     });
@@ -261,7 +301,7 @@ function render() {
     const q = selectedQuestions[currentIndex];
 
     titleEl.innerText = `Question ${currentIndex + 1}/${selectedQuestions.length}`;
-    subtitleEl.innerText = "";
+    subtitleEl.innerText = ""; // no cute/memory subtitles
 
     setImage(config.paths.questionImageBase + q.image);
     setTextPlain(q.question);
@@ -282,6 +322,7 @@ function render() {
           stage = "calculating";
           render();
 
+          // 2.5 seconds waiting time
           setTimeout(() => {
             stage = "score";
             render();
@@ -301,6 +342,7 @@ function render() {
     showProgress(false);
     subtitleEl.innerText = "";
     titleEl.innerText = "One sec…";
+
     setImage(config.paths.scoreImage);
     setTextPlain("Calculating…");
     showOverlay(true);
